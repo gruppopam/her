@@ -11,6 +11,7 @@ require "her/api"
 require "her/middleware"
 require "her/errors"
 require "her/collection"
+require "her/logger"
 
 module Her
 end
