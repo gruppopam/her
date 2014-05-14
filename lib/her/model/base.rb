@@ -20,7 +20,7 @@ module Her
       #
       # @private
       def [](attribute_name)
-        get_attribute(attribute_name) ||
+        return get_attribute(attribute_name) unless get_attribute(attribute_name).nil?
         get_association(attribute_name)
       end
 
