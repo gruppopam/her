@@ -108,6 +108,22 @@ module Her
             end
           RUBY
         end
+
+        def post_json(url, json)
+          response = self.use_api.connection.post do |req|
+            req.url url
+            req.headers['Content-Type'] = 'application/json'
+            req.body = json
+          end
+          response.body[:data] if response
+        end
+
+        def get_hash(url, params={})
+          get_raw(url, params) do |parsed_data, response|
+            parsed_data[:data]
+          end
+        end
+
       end
     end
   end
