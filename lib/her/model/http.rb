@@ -118,6 +118,16 @@ module Her
           response.body[:data] if response
         end
 
+        def put_json(url, json)
+          response = self.use_api.connection.put do |req|
+            req.url url
+            req.headers['Content-Type'] = 'application/json'
+            req.body = json
+          end
+          response.body[:data] if response
+        end
+
+
         def get_hash(url, params={})
           get_raw(url, params) do |parsed_data, response|
             parsed_data[:data]
